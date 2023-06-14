@@ -11,6 +11,7 @@ const userRoute = () => {
   router.get("/user" , controllerdb.user);
   router.get("/register", controller.registerPage);
   router.post("/register", controller.doregister);
+  router.get("/biodata:id", controller.biodataPage);
 
   const authenticated = router.use(checkAuthenticationMiddleware);
   authenticated.get("/", controller.userPage);

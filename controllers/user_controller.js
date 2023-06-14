@@ -24,6 +24,13 @@ async registerPage(req, res) {
 
   return res.render("register");
 }
+//Biodata
+async biodataPage(req, res) {
+  
+  console.log('masuk gan');
+  
+  return res.render("biodata");
+}
 
   async doLogin(req, res) {
     const { username, password } = req.body;
@@ -38,7 +45,6 @@ async registerPage(req, res) {
       
 
           if (!err) {
-            console.log ('masuk gan')
             const foundIndex = dataUser.findIndex((dataUser) => {
               return dataUser.username == username && dataUser.password == password;
             });
@@ -82,7 +88,6 @@ async registerPage(req, res) {
       connection.release() // return the connection to pool
       
       if (!err) {
-        console.log('masuk gan');
         return res.redirect("/login");
     } else {
       if (err) {
@@ -110,11 +115,30 @@ async registerPage(req, res) {
     if (role != "superuser") {
       return res.redirect("/login");
     }
+    //DataBase admnin
+    pool.getConnection((err, connection) => {
+      if(err) throw err
+      connection.query('SELECT * from user_game_biodata', (err, rows) => {
+      const dataUserBiodata = rows ;
+      connection.release() // return the connection to pool
+      
 
-    return res.render("admin", {
-      username,
-      role,
-    });
+          if (!err) {
+            console.log(dataUserBiodata[0].Username);
+            return res.render("admin", {
+              username,
+              role,
+              dataUserBiodata,
+            });
+          } else {
+              console.log(err)
+          }
+
+          // if(err) throw err
+          console.log('The data from beer table are: \n', rows)
+      })
+  })
+    
   }
 
   async logout(req, res) {

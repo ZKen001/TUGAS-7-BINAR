@@ -6,13 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Admin Page</title>
   </head>
+  <style>
+    table, th, td {
+      border:1px solid grey;
+    }
+    </style>
   <body>
-    <h1>Only Admin can access this page</h1>
-
+    <h1>USER DATA</h1>
+    <table style="width:100%">
+      <tr>
+        <th>USER ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>SKOR</th>
+        <th>Last Update</th>
+        <th>Action</th>
+      </tr>
+      <tr>
+        <td><%= dataUserBiodata[0].id %></td>
+        <td><%= dataUserBiodata[0].Username %></td>
+        <td><%= dataUserBiodata[0].Password %></td>
+        <td><%= dataUserBiodata[0].Skor %></td>  
+        <td><%= dataUserBiodata[0].Last_Update %></td>
+        <td><a href="/biodata">Show</a>
+          <a href="/biodata">Edit</a>
+          <a href="/biodata">Delete</a></td>
+      </tr>
+      <tr>
+        <td>Centro comercial Moctezuma</td>
+        <td>Francisco Chang</td>
+        <td>Mexico</td>
+        <td>-</td>  
+        <td>-</td>
+        <td><a href="/biodata">Show</a>
+        <a href="/biodata">Edit</a>
+        <a href="/biodata">Delete</a></td>
+      </tr>
+    </table>
+    
     <br />
     Username: <%= username %> <br />
     Role: <%= role %> <br />
 
-    <a href="/logout">Logout</a>
+    <a href="/logout"><button type="submit">Logout</button></td>
   </body>
 </html>
