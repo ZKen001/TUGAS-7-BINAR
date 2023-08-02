@@ -1,5 +1,6 @@
 const UserController = require("./user_controller");
-const userDb         = require("../mysql/sql");
+const userDb         = require("../model/sql");
+var bodyParser = require('body-parser')
 const userRoute = () => {
   const router = require("express").Router();
   const checkAuthenticationMiddleware = require("../middlewares/check_authentication");
@@ -11,8 +12,17 @@ const userRoute = () => {
   router.get("/user" , controllerdb.user);
   router.get("/register", controller.registerPage);
   router.post("/register", controller.doregister);
-  router.get("/biodata:id", controller.biodataPage);
+  router.get("/biodata", controller.biodataPage);
+  router.get("/edit", controller.editPage);
+  router.get("/delete",controller.deletePage);
+  router.post("/edit",controller.doEdit);
 
+  router.get("/room", controller.gamePage);
+  router.post("/room", controller.doGame);
+
+  router.post("/createRoom", controller.gameRoom);
+  router.post("/figthRoom", controller.figthRoom);
+  
   const authenticated = router.use(checkAuthenticationMiddleware);
   authenticated.get("/", controller.userPage);
   authenticated.get("/admin", controller.adminPage);

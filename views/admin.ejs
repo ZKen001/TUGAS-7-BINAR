@@ -7,13 +7,17 @@
     <title>Admin Page</title>
   </head>
   <style>
+    h1 {
+      text-align: center;
+    }
     table, th, td {
       border:1px solid grey;
     }
     </style>
+
   <body>
     <h1>USER DATA</h1>
-    <table style="width:100%">
+    <table style="width:100%" id="myTable">
       <tr>
         <th>USER ID</th>
         <th>Username</th>
@@ -24,24 +28,25 @@
       </tr>
       <tr>
         <td><%= dataUserBiodata[0].id %></td>
-        <td><%= dataUserBiodata[0].Username %></td>
-        <td><%= dataUserBiodata[0].Password %></td>
+        <td><%= dataUserBiodata[0].username %></td>
+        <td><%= dataUserBiodata[0].password %></td>
         <td><%= dataUserBiodata[0].Skor %></td>  
         <td><%= dataUserBiodata[0].Last_Update %></td>
-        <td><a href="/biodata">Show</a>
-          <a href="/biodata">Edit</a>
-          <a href="/biodata">Delete</a></td>
-      </tr>
+        <td><a id="1" href="/biodata?id=1" >Show</a>
+          <a id="1"  href="/edit?id=1">Edit</a>
+          <a id="1" href="/delete?id=1">Delete</a></td>
+        </tr>
       <tr>
-        <td>Centro comercial Moctezuma</td>
-        <td>Francisco Chang</td>
-        <td>Mexico</td>
-        <td>-</td>  
-        <td>-</td>
-        <td><a href="/biodata">Show</a>
-        <a href="/biodata">Edit</a>
-        <a href="/biodata">Delete</a></td>
+        <td><%= dataUserBiodata[1].id %></td>
+        <td><%= dataUserBiodata[1].username %></td>
+        <td><%= dataUserBiodata[1].password %></td>
+        <td><%= dataUserBiodata[1].Skor %></td>  
+        <td><%= dataUserBiodata[1].Last_Update %></td>
+        <td><a id="2" href="/biodata?id=2">Show</a>
+        <a id="2" href="/edit?id=2">Edit</a>
+        <a id="2" href="/delete?id=2">Delete</a></td>
       </tr>
+      
     </table>
     
     <br />
